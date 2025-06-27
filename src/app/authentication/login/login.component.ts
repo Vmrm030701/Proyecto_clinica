@@ -12,6 +12,7 @@ import { routes } from 'src/app/shared/routes/routes';
 export class LoginComponent implements OnInit {
   public routes = routes;
   public passwordClass = false;
+  public ERROR = false;
 
   form = new FormGroup({
     email: new FormControl('ingeniebrios@alcoholizados.com', [
@@ -34,6 +35,8 @@ export class LoginComponent implements OnInit {
 
   loginFormSubmit() {
     if (this.form.valid) {
+
+      this.ERROR = false;
       this.auth.login(this.form.value.email ? this.form.value.email: '' ,this.form.value.password ? this.form.value.password: '')
       .subscribe((resp:any) => {
         console.log(resp);
@@ -41,7 +44,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate([routes.adminDashboard]);
         }else{
           //EL LOGIN NO ES EXISTOSO
-          alert("QUE EL USUARIO O CONTRASEÑA SON INCORRECTOS, NO EXISTEN");
+          this.ERROR = true;
         }
       }, error => {
         console.log(error);

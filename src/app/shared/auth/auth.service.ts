@@ -5,16 +5,35 @@ import { routes } from '../routes/routes';
 import { URL_SERVICIOS } from 'src/app/config/config';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, of } from 'rxjs';
+import { L } from '@fullcalendar/list/internal-common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  user:any;
+  token:any;
+
 
   constructor(
     private router: Router,
     public http: HttpClient,
-  ) {}
+  ) {
+    this.getLocalStorage();
+    // this.getUser();
+  }
+
+  getLocalStorage() {
+    if(localStorage.getItem("token") && localStorage.getItem("user")){
+      let USER = localStorage.getItem("user");
+      this.user = JSON.parse(USER ? USER : '');
+      this.token = localStorage.getItem("token");
+    }else{
+      this.user = null;
+      this.token = null;
+    }
+  }
+
 
   login(email:string,password:string) {
     //localStorage.setItem('authenticated', 'true');
@@ -46,6 +65,7 @@ export class AuthService {
   logout(){
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem('authenticated');
     this.router.navigate([routes.login]);
   }
 

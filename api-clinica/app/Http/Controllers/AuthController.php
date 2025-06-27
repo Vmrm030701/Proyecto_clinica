@@ -1,13 +1,13 @@
 <?php
- 
+
 namespace App\Http\Controllers;
- 
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Validator;
- 
- 
+
+
 class AuthController extends Controller
 {
     /**
@@ -17,36 +17,38 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login','register']]);
     }
- 
- 
+
+
     /**
      * Register a User.
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function register() {
+        $this->authorize('create', User::class);
+
         $validator = Validator::make(request()->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
         ]);
- 
+
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
- 
+
         $user = new User;
         $user->name = request()->name;
         $user->email = request()->email;
         $user->password = bcrypt(request()->password);
         $user->save();
- 
+
         return response()->json($user, 201);
     }
- 
- 
+
+
     /**
      * Get a JWT via given credentials.
      *
@@ -55,14 +57,14 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
- 
+
         if (! $token = auth('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
- 
+
         return $this->respondWithToken($token);
     }
- 
+
     /**
      * Get the authenticated User.
      *
@@ -72,7 +74,7 @@ class AuthController extends Controller
     {
         return response()->json(auth('api')->user());
     }
- 
+
     /**
      * Log the user out (Invalidate the token).
      *
@@ -81,10 +83,10 @@ class AuthController extends Controller
     public function logout()
     {
         auth()->logout();
- 
+
         return response()->json(['message' => 'Successfully logged out']);
     }
- 
+
     /**
      * Refresh a token.
      *
@@ -94,7 +96,7 @@ class AuthController extends Controller
     {
         return $this->respondWithToken(auth()->refresh());
     }
- 
+
     /**
      * Get the token array structure.
      *

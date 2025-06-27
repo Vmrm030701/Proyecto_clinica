@@ -80,6 +80,7 @@
                       class="profile-views toggle-password"  tabindex="0"
                     ></span>
                   </div>
+                  <!--
                   <div class="forgotpass">
                     <div class="remember-me">
                       <label
@@ -91,6 +92,12 @@
                       </label>
                     </div>
                     <a [routerLink]="routes.forgotPassword">Forgot Password?</a>
+                  </div> -->
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="ERROR">
+                      <strong>Error!</strong> El usuario y contraseña son incorrectos.
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true"> </span>
+                      </button>
                   </div>
                   <div class="form-group login-btn">
                     <button
@@ -103,16 +110,15 @@
                   </div>
                 </form>
                 <!-- /Form -->
-
+<!--
                 <div class="next-sign">
                   <p class="account-subtitle">
                     Need an account?
                     <a [routerLink]="routes.register">Sign Up</a>
                   </p>
 
-                  <!-- Social Login -->
                   <div class="social-login">
-                    <a href="javascript:;" 
+                    <a href="javascript:;"
                       ><img src="assets/img/icons/login-icon-01.svg" alt=""
                     /></a>
                     <a href="javascript:;"
@@ -122,8 +128,7 @@
                       ><img src="assets/img/icons/login-icon-03.svg" alt=""
                     /></a>
                   </div>
-                  <!-- /Social Login -->
-                </div>
+                </div>-->
               </div>
             </div>
           </div>
