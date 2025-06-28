@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-06-2025 a las 10:59:43
+-- Tiempo de generación: 28-06-2025 a las 09:11:03
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,30 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cache`
---
-
-CREATE TABLE `cache` (
-  `key` varchar(255) NOT NULL,
-  `value` mediumtext NOT NULL,
-  `expiration` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `cache_locks`
---
-
-CREATE TABLE `cache_locks` (
-  `key` varchar(255) NOT NULL,
-  `owner` varchar(255) NOT NULL,
-  `expiration` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `failed_jobs`
 --
 
@@ -59,41 +35,6 @@ CREATE TABLE `failed_jobs` (
   `payload` longtext NOT NULL,
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `jobs`
---
-
-CREATE TABLE `jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `queue` varchar(255) NOT NULL,
-  `payload` longtext NOT NULL,
-  `attempts` tinyint(3) UNSIGNED NOT NULL,
-  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
-  `available_at` int(10) UNSIGNED NOT NULL,
-  `created_at` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `job_batches`
---
-
-CREATE TABLE `job_batches` (
-  `id` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `total_jobs` int(11) NOT NULL,
-  `pending_jobs` int(11) NOT NULL,
-  `failed_jobs` int(11) NOT NULL,
-  `failed_job_ids` longtext NOT NULL,
-  `options` mediumtext DEFAULT NULL,
-  `cancelled_at` int(11) DEFAULT NULL,
-  `created_at` int(11) NOT NULL,
-  `finished_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -113,9 +54,9 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '0001_01_01_000000_create_users_table', 1),
-(2, '0001_01_01_000001_create_cache_table', 1),
-(3, '0001_01_01_000002_create_jobs_table', 1),
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2025_06_27_065225_create_permission_tables', 1);
 
@@ -148,9 +89,7 @@ CREATE TABLE `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(1, 'App\\Models\\User', 1),
-(2, 'App\\Models\\User', 2),
-(3, 'App\\Models\\User', 3);
+(1, 'App\\Models\\User', 1);
 
 -- --------------------------------------------------------
 
@@ -183,10 +122,39 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'edit articles', 'api', '2025-06-27 12:59:36', '2025-06-27 12:59:36'),
-(2, 'delete articles', 'api', '2025-06-27 12:59:36', '2025-06-27 12:59:36'),
-(3, 'publish articles', 'api', '2025-06-27 12:59:36', '2025-06-27 12:59:36'),
-(4, 'unpublish articles', 'api', '2025-06-27 12:59:36', '2025-06-27 12:59:36');
+(1, 'register_rol', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(2, 'list_rol', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(3, 'edit_rol', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(4, 'delete_rol', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(5, 'register_doctor', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(6, 'list_doctor', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(7, 'edit_doctor', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(8, 'delete_doctor', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(9, 'profile_doctor', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(10, 'register_patient', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(11, 'list_patient', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(12, 'edit_patient', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(13, 'delete_patient', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(14, 'profile_patient', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(15, 'register_staff', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(16, 'list_staff', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(17, 'edit_staff', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(18, 'delete_staff', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(19, 'register_appointment', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(20, 'list_appointment', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(21, 'edit_appointment', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(22, 'delete_appointment', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(23, 'register_specialty', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(24, 'list_specialty', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(25, 'edit_specialty', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(26, 'delete_specialty', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(27, 'show_payment', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(28, 'edit_payment', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(29, 'activitie', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(30, 'calendar', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(31, 'expense_report', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(32, 'invoice_report', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
+(33, 'settings', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50');
 
 -- --------------------------------------------------------
 
@@ -226,9 +194,7 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'writer', 'api', '2025-06-27 12:59:36', '2025-06-27 12:59:36'),
-(2, 'admin', 'api', '2025-06-27 12:59:36', '2025-06-27 12:59:36'),
-(3, 'Super-Admin', 'api', '2025-06-27 12:59:36', '2025-06-27 12:59:36');
+(1, 'Super-Admin', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50');
 
 -- --------------------------------------------------------
 
@@ -239,31 +205,6 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VAL
 CREATE TABLE `role_has_permissions` (
   `permission_id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `role_has_permissions`
---
-
-INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
-(1, 1),
-(2, 1),
-(3, 2),
-(4, 2);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `sessions`
---
-
-CREATE TABLE `sessions` (
-  `id` varchar(255) NOT NULL,
-  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `ip_address` varchar(45) DEFAULT NULL,
-  `user_agent` text DEFAULT NULL,
-  `payload` longtext NOT NULL,
-  `last_activity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -288,26 +229,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Example User', 'test@example.com', '2025-06-27 12:59:36', '$2y$10$N/EZCEin5hWkAIvWhZwyq.GXgZR9TCcDM5XokueMeJGa2eCwSY.Mq', 'Vf3lzgS09g', '2025-06-27 12:59:36', '2025-06-27 12:59:36'),
-(2, 'Example Admin User', 'admin@example.com', '2025-06-27 12:59:36', '$2y$10$xjGOoutzm1kZE5WyIpcK3el/Nb.qHxEy2q6mmEUqLFhg9nIoNiBdi', 'BWXTaAOuiL', '2025-06-27 12:59:36', '2025-06-27 12:59:36'),
-(3, 'Example Super-Admin User', 'superadmin@example.com', '2025-06-27 12:59:36', '$2y$10$y4NWZDUG2veVrsqwxJG02uwlJlgXWiERBNT2kxfQZLrvZaNtdddG6', 'tWl7iZiZaO', '2025-06-27 12:59:36', '2025-06-27 12:59:36'),
-(4, 'jose', 'jose@example.com', NULL, '$2y$10$0dJphY15cqM20NSuFYMX/ux4eIYspavGzg2sbG6yAi7lbN0lxaedq', NULL, '2025-06-27 13:26:58', '2025-06-27 13:26:58');
+(1, 'Super-Admin User', 'josecode@gmail.com', '2025-06-28 11:27:51', '$2y$10$t/O09UnGEDVzCJmXtTMFGuW9ZfABnMtEER4eOua7/.s4epLSjwT4W', '54YHrdAmos', '2025-06-28 11:27:51', '2025-06-28 11:27:51');
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `cache`
---
-ALTER TABLE `cache`
-  ADD PRIMARY KEY (`key`);
-
---
--- Indices de la tabla `cache_locks`
---
-ALTER TABLE `cache_locks`
-  ADD PRIMARY KEY (`key`);
 
 --
 -- Indices de la tabla `failed_jobs`
@@ -315,19 +241,6 @@ ALTER TABLE `cache_locks`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
--- Indices de la tabla `jobs`
---
-ALTER TABLE `jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `jobs_queue_index` (`queue`);
-
---
--- Indices de la tabla `job_batches`
---
-ALTER TABLE `job_batches`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `migrations`
@@ -385,14 +298,6 @@ ALTER TABLE `role_has_permissions`
   ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
--- Indices de la tabla `sessions`
---
-ALTER TABLE `sessions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `sessions_user_id_index` (`user_id`),
-  ADD KEY `sessions_last_activity_index` (`last_activity`);
-
---
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -410,12 +315,6 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `jobs`
---
-ALTER TABLE `jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
@@ -425,7 +324,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -437,13 +336,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
