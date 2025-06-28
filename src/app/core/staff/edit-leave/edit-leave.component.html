@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="leave">Leave Type <span class="login-danger">*</span></label>
+                                        <label >Leave Type <span class="login-danger">*</span></label>
                                         <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Leave Type">
                                             <mat-option *ngFor="let data of selectedList" [value]="data.value">
                                             {{data.value}}
@@ -39,13 +39,13 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="Number">Number of Days  <span class="login-danger">*</span></label>
+                                        <label >Number of Days  <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text"  value="2" >
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="From">From <span class="login-danger">*</span></label>
+                                        <label >From <span class="login-danger">*</span></label>
                                         <input class="form-control datetimepicker" type="text" [formControl]="date" matInput [matDatepicker]="picker1" >
                                         <mat-datepicker #picker1></mat-datepicker>
                                         <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="To">To <span class="login-danger">*</span></label>
+                                        <label >To <span class="login-danger">*</span></label>
                                         <input class="form-control datetimepicker" type="text"  [formControl]="date" matInput [matDatepicker]="picker2">
                                         <mat-datepicker #picker2></mat-datepicker>
                                         <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="col-12 col-sm-12">
                                     <div class="form-group local-forms">
-                                        <label for="Leave Reason">Leave Reason  <span class="login-danger">*</span></label>
+                                        <label>Leave Reason  <span class="login-danger">*</span></label>
                                         <textarea class="form-control" rows="3" cols="30">Going to hospital</textarea>
                                     </div>
                                 </div>

@@ -38,9 +38,7 @@
             <ul class="app-listing">
               <li>
                 <div class="multipleSelection">
-                  <div class="selectBox" (click)="openCheckBoxes('User')"
-                  (keyup.enter)="openCheckBoxes('User')"
-                  tabindex="0">
+                  <div class="selectBox" (click)="openCheckBoxes('User')">
                     <p class="mb-0">
                       <i class="feather icon-user-plus me-1 select-icon"></i>
                       Select User
@@ -108,9 +106,7 @@
               </li>
               <li>
                 <div class="multipleSelection">
-                  <div class="selectBox" (click)="openCheckBoxes('Date')"
-                  (keyup.enter)="openCheckBoxes('Date')"
-                  tabindex="0">
+                  <div class="selectBox" (click)="openCheckBoxes('Date')">
                     <p class="mb-0">
                       <i class="feather icon-calendar me-1 select-icon"></i>
                       Select Date
@@ -200,8 +196,7 @@
               </li>
               <li>
                 <div class="multipleSelection">
-                  <div class="selectBox" (click)="openCheckBoxes('Status')"
-                  (keyup.enter)="openCheckBoxes('Status')" tabindex="0">
+                  <div class="selectBox" (click)="openCheckBoxes('Status')">
                     <p class="mb-0">
                       <i class="feather icon-book-open me-1 select-icon"></i>
                       Select Status
@@ -258,7 +253,7 @@
               </li>
               <li>
                 <div class="multipleSelection">
-                  <div class="selectBox" (click)="openCheckBoxes('Category')"  (keyup.enter)="openCheckBoxes('Category')" tabindex="0">
+                  <div class="selectBox" (click)="openCheckBoxes('Category')">
                     <p class="mb-0">
                       <i class="feather icon-bookmark me-1 select-icon"></i>
                       By Category
@@ -631,8 +626,6 @@
                           "
                           [hidden]="currentPage === 1"
                           (click)="moveToPage(currentPage - 2)"
-                                      (keyup.enter)="moveToPage(currentPage - 2)"  
-                                      tabindex="0"
                         >
                           <a class="page-link" href="javascript:void(0);">
                             ...
@@ -650,8 +643,7 @@
                               serialNumberArray[serialNumberArray.length - 1]
                           "
                           class="page-item"
-                          (click)="moveToPage(currentPage + 2)"(keyup.enter)="moveToPage(currentPage + 2)"  
-                          tabindex="0"
+                          (click)="moveToPage(currentPage + 2)"
                         >
                           <a class="page-link" href="javascript:void(0);">
                             ...

@@ -16,7 +16,7 @@ export class HeaderComponent {
   public addClass = false;
   public user:any;
 
-  constructor(public router: Router,private sideBar: SideBarService, public auth: AuthService) {
+  constructor(public router: Router,private sideBar: SideBarService,public auth: AuthService) {
     this.sideBar.toggleSideBar.subscribe((res: string) => {
       if (res == 'true') {
         this.miniSidebar = true;
@@ -26,10 +26,7 @@ export class HeaderComponent {
     });
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER : '');
-  }
-
-  logout(){
-    this.auth.logout();
+    console.log(this.user);
   }
 
   openBoxFunc() {
@@ -42,20 +39,22 @@ export class HeaderComponent {
       mainWrapper.classList.remove('open-msg-box');
     }
   }
-
+  logout(){
+    this.auth.logout();
+  }
   public toggleSideBar(): void {
     this.sideBar.switchSideMenuPosition();
   }
   public toggleMobileSideBar(): void {
     this.sideBar.switchMobileSideBarPosition();
-
+    
       this.addClass = !this.addClass;
       /* eslint no-var: off */
       var root = document.getElementsByTagName( 'html' )[0];
       /* eslint no-var: off */
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       var sidebar:any = document.getElementById('sidebar')
-
+  
       if (this.addClass) {
         root.classList.add('menu-opened');
         sidebar.classList.add('opened');

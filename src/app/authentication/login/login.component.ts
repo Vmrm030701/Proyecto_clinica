@@ -13,42 +13,44 @@ export class LoginComponent implements OnInit {
   public routes = routes;
   public passwordClass = false;
   public ERROR = false;
-
   form = new FormGroup({
-    email: new FormControl('ingeniebrios@alcoholizados.com', [
+    email: new FormControl('josecode@gmail.com', [
       Validators.required,
       Validators.email,
     ]),
-    password: new FormControl('87654321', [Validators.required]),
+    password: new FormControl('12345678', [Validators.required]),
   });
 
   get f() {
     return this.form.controls;
   }
 
-  constructor(public auth: AuthService, public router: Router) {}
+  constructor(public auth: AuthService,public router: Router) {}
   ngOnInit(): void {
-    if (localStorage.getItem('authenticated')) {
-      localStorage.removeItem('authenticated');
-    }
+    // if (localStorage.getItem('authenticated')) {
+    //   localStorage.removeItem('authenticated');
+    // }
   }
 
   loginFormSubmit() {
     if (this.form.valid) {
-
       this.ERROR = false;
-      this.auth.login(this.form.value.email ? this.form.value.email: '' ,this.form.value.password ? this.form.value.password: '')
+      this.auth.login(this.form.value.email ? this.form.value.email : '' ,this.form.value.password ? this.form.value.password: '')
       .subscribe((resp:any) => {
         console.log(resp);
         if(resp){
-          this.router.navigate([routes.adminDashboard]);
+          // EL LOGIN ES EXITOSO
+          setTimeout(() => {
+            this.router.navigate([routes.adminDashboard]);
+          }, 50);
         }else{
-          //EL LOGIN NO ES EXISTOSO
+          // EL LOGIN NO ES EXITOSO
           this.ERROR = true;
         }
-      }, error => {
+      },error => {
         console.log(error);
-      });
+      })
+      ;
     }
   }
   togglePassword() {

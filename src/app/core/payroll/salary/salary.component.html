@@ -55,13 +55,13 @@
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-xl-4">  
                                         <div class="form-group local-forms">
-                                            <label for="Employee">Employee Name </label>
+                                            <label >Employee Name </label>
                                             <input class="form-control" type="text"  >
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6 col-xl-4">
                                         <div class="form-group local-forms">
-                                            <label for="Role">Role </label>
+                                            <label >Role </label>
                                             <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Role">
                                               <mat-option *ngFor="let data of selectedList1" [value]="data.value">
                                               {{data.value}}
@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="col-12 col-md-6 col-xl-4">
                                         <div class="form-group local-forms">
-                                            <label for="Leave">Leave Status </label>
+                                            <label >Leave Status </label>
                                             <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Leave Status">
                                               <mat-option *ngFor="let data of selectedList2" [value]="data.value">
                                               {{data.value}}
@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="col-12 col-md-6 col-xl-4">
                                         <div class="form-group local-forms">
-                                            <label for="From ">From </label>
+                                            <label >From </label>
                                             <input class="form-control datetimepicker" type="text" matInput [matDatepicker]="picker1" >
                                             <mat-datepicker #picker1></mat-datepicker>
                                             <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="col-12 col-md-6 col-xl-4">
                                         <div class="form-group local-forms">
-                                            <label for="to" >To </label>
+                                            <label >To </label>
                                             <input class="form-control datetimepicker" type="text" matInput [matDatepicker]="picker2"  >
                                             <mat-datepicker #picker2></mat-datepicker>
                                             <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -224,8 +224,6 @@
                                           "
                                           [hidden]="currentPage === 1"
                                           (click)="moveToPage(currentPage - 2)"
-                                      (keyup.enter)="moveToPage(currentPage - 2)"  
-                                      tabindex="0"
                                         >
                                           <a class="page-link" href="javascript:void(0);">
                                             ...
@@ -243,8 +241,7 @@
                                               serialNumberArray[serialNumberArray.length - 1]
                                           "
                                           class="page-item"
-                                          (click)="moveToPage(currentPage + 2)"(keyup.enter)="moveToPage(currentPage + 2)"  
-                                          tabindex="0"
+                                          (click)="moveToPage(currentPage + 2)"
                                         >
                                           <a class="page-link" href="javascript:void(0);">
                                             ...

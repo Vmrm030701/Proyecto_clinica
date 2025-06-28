@@ -28,19 +28,19 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">  
                                     <div class="form-group local-forms">
-                                        <label  for="blogtitle">Blog Title <span class="login-danger">*</span></label>
+                                        <label >Blog Title <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" value="Vaccines Are Close - But Right Now We Need to Hunker Down" >
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="author">Author Name <span class="login-danger">*</span></label>
+                                        <label >Author Name <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" value="Stephen Bruk" >
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="category">Blog Category <span class="login-danger">*</span></label>
+                                        <label >Blog Category <span class="login-danger">*</span></label>
                                         <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Choose Blog Category">
                                             <mat-option *ngFor="let data of selectedList1" [value]="data.value">
                                             {{data.value}}
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label  for="blog">Blog Sub Category <span class="login-danger">*</span></label>
+                                        <label >Blog Sub Category <span class="login-danger">*</span></label>
                                         <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Choose Sub Blog Category">
                                             <mat-option *ngFor="let data of selectedList2" [value]="data.value">
                                             {{data.value}}
@@ -60,13 +60,13 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="Tags">Tags <small>(separated with a comma)</small> <span class="login-danger">*</span></label>
+                                        <label>Tags <small>(separated with a comma)</small> <span class="login-danger">*</span></label>
                                         <input type="text" data-role="tagsinput" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group select-gender">
-                                        <label for="Status" class="gen-label">Blog Status <span class="login-danger">*</span></label>
+                                        <label class="gen-label">Blog Status <span class="login-danger">*</span></label>
                                         <div class="form-check-inline">
                                             <label class="form-check-label">
                                                 <input type="radio" name="gender" class="form-check-input" checked>Active
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-12">
                                     <div class="form-group local-top-form">
-                                        <label for="Avatar" class="local-top">Avatar <span class="login-danger">*</span></label>
+                                        <label class="local-top">Avatar <span class="login-danger">*</span></label>
                                         <div class="settings-btn upload-files-avator">
                                             <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" class="hide-input">
                                             <label for="file" class="upload">Choose File</label>

@@ -5,25 +5,22 @@ import { routes } from '../routes/routes';
 import { URL_SERVICIOS } from 'src/app/config/config';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, of } from 'rxjs';
-import { L } from '@fullcalendar/list/internal-common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+
   user:any;
   token:any;
-
-
   constructor(
     private router: Router,
     public http: HttpClient,
   ) {
     this.getLocalStorage();
-    // this.getUser();
   }
 
-  getLocalStorage() {
+  getLocalStorage(){
     if(localStorage.getItem("token") && localStorage.getItem("user")){
       let USER = localStorage.getItem("user");
       this.user = JSON.parse(USER ? USER : '');
@@ -34,12 +31,11 @@ export class AuthService {
     }
   }
 
-
   login(email:string,password:string) {
-    //localStorage.setItem('authenticated', 'true');
-    //this.router.navigate([routes.adminDashboard]);
+    // localStorage.setItem('authenticated', 'true');
+    // this.router.navigate([routes.adminDashboard]);
     let URL = URL_SERVICIOS+"/auth/login";
-    return this.http.post(URL,{email: email, password: password}).pipe(
+    return this.http.post(URL,{email: email,password: password}).pipe(
       map((auth:any) => {
         console.log(auth);
         const result = this.saveLocalStorage(auth);
@@ -53,10 +49,10 @@ export class AuthService {
   }
 
   saveLocalStorage(auth:any){
-    if(auth && auth.acces_token){
-      localStorage.setItem("token", auth.access_token);
-      localStorage.setItem("user",JSON.stringify(auth.user))
-      localStorage.setItem('authenticated','true');
+    if(auth && auth.access_token){
+      localStorage.setItem("token",auth.access_token);
+      localStorage.setItem("user",JSON.stringify(auth.user));
+      localStorage.setItem('authenticated', 'true');
       return true;
     }
     return false;
@@ -68,5 +64,4 @@ export class AuthService {
     localStorage.removeItem('authenticated');
     this.router.navigate([routes.login]);
   }
-
 }
