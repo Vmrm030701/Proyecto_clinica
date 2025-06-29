@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2025 a las 09:11:03
+-- Tiempo de generación: 29-06-2025 a las 05:46:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -89,7 +89,8 @@ CREATE TABLE `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(1, 'App\\Models\\User', 1);
+(1, 'App\\Models\\User', 1),
+(2, 'App\\Models\\User', 2);
 
 -- --------------------------------------------------------
 
@@ -122,39 +123,39 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'register_rol', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(2, 'list_rol', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(3, 'edit_rol', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(4, 'delete_rol', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(5, 'register_doctor', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(6, 'list_doctor', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(7, 'edit_doctor', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(8, 'delete_doctor', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(9, 'profile_doctor', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(10, 'register_patient', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(11, 'list_patient', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(12, 'edit_patient', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(13, 'delete_patient', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(14, 'profile_patient', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(15, 'register_staff', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(16, 'list_staff', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(17, 'edit_staff', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(18, 'delete_staff', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(19, 'register_appointment', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(20, 'list_appointment', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(21, 'edit_appointment', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(22, 'delete_appointment', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(23, 'register_specialty', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(24, 'list_specialty', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(25, 'edit_specialty', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(26, 'delete_specialty', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(27, 'show_payment', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(28, 'edit_payment', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(29, 'activitie', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(30, 'calendar', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(31, 'expense_report', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(32, 'invoice_report', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50'),
-(33, 'settings', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50');
+(1, 'register_rol', 'api', '2025-06-29 07:50:17', '2025-06-29 07:50:17'),
+(2, 'list_rol', 'api', '2025-06-29 07:50:17', '2025-06-29 07:50:17'),
+(3, 'edit_rol', 'api', '2025-06-29 07:50:17', '2025-06-29 07:50:17'),
+(4, 'delete_rol', 'api', '2025-06-29 07:50:17', '2025-06-29 07:50:17'),
+(5, 'register_doctor', 'api', '2025-06-29 07:50:17', '2025-06-29 07:50:17'),
+(6, 'list_doctor', 'api', '2025-06-29 07:50:17', '2025-06-29 07:50:17'),
+(7, 'edit_doctor', 'api', '2025-06-29 07:50:17', '2025-06-29 07:50:17'),
+(8, 'delete_doctor', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(9, 'profile_doctor', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(10, 'register_patient', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(11, 'list_patient', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(12, 'edit_patient', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(13, 'delete_patient', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(14, 'profile_patient', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(15, 'register_staff', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(16, 'list_staff', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(17, 'edit_staff', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(18, 'delete_staff', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(19, 'register_appointment', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(20, 'list_appointment', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(21, 'edit_appointment', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(22, 'delete_appointment', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(23, 'register_specialty', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(24, 'list_specialty', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(25, 'edit_specialty', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(26, 'delete_specialty', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(27, 'show_payment', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(28, 'edit_payment', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(29, 'activitie', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(30, 'calendar', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(31, 'expense_report', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(32, 'invoice_report', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(33, 'settings', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18');
 
 -- --------------------------------------------------------
 
@@ -194,7 +195,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'Super-Admin', 'api', '2025-06-28 11:27:50', '2025-06-28 11:27:50');
+(1, 'Super-Admin', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
+(2, 'prueba2', 'api', '2025-06-29 08:33:02', '2025-06-29 08:33:02');
 
 -- --------------------------------------------------------
 
@@ -207,6 +209,14 @@ CREATE TABLE `role_has_permissions` (
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(2, 2),
+(16, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -216,20 +226,31 @@ CREATE TABLE `role_has_permissions` (
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
+  `surname` varchar(250) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
+  `specialitie_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `mobile` varchar(50) DEFAULT NULL,
+  `birth_date` timestamp NULL DEFAULT NULL,
+  `gender` tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '1 es masculino y 2 es femenino',
+  `education` longtext DEFAULT NULL,
+  `designation` longtext DEFAULT NULL,
+  `address` varchar(250) DEFAULT NULL,
+  `avatar` varchar(250) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Super-Admin User', 'josecode@gmail.com', '2025-06-28 11:27:51', '$2y$10$t/O09UnGEDVzCJmXtTMFGuW9ZfABnMtEER4eOua7/.s4epLSjwT4W', '54YHrdAmos', '2025-06-28 11:27:51', '2025-06-28 11:27:51');
+INSERT INTO `users` (`id`, `name`, `surname`, `email`, `specialitie_id`, `mobile`, `birth_date`, `gender`, `education`, `designation`, `address`, `avatar`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Super-Admin User', NULL, 'josecode@gmail.com', NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, '2023-09-28 15:46:57', '$2y$10$iec5VX6w9B3vTEIurNIFMufNEK0ztwKOB4.NnIsRIc5GivpgrAozK', 'bkMYKIZInF', '2023-09-28 15:46:57', '2023-09-28 15:46:57', NULL),
+(2, 'Cristopher antoni', 'alvarado Armas', 'ingeniebrios@alcoholizados.com', NULL, '947714624', '2000-11-12 17:00:00', 1, 'sdfdsfsdfsdf', 'sdfsdfsdfsd', 'Distrito Moche, Sector Poblado Miramar, Calle Crol', 'staffs/vh2HdrdoWgAKqV4VPgpZQp0russTVA5KTdciRdsJ.jpg', NULL, '$2y$10$YGZn/vYobNRxAQyzR2lvIOzJVIQolu4O4zhAR/RkuWt9NlewsrdQu', NULL, '2025-06-29 08:45:05', '2025-06-29 08:45:05', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -336,13 +357,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
