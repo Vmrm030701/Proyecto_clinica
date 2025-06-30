@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-06-2025 a las 05:46:01
+-- Tiempo de generación: 30-06-2025 a las 08:13:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,97 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `citas_medicas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `doctor_schedule_days`
+--
+
+CREATE TABLE `doctor_schedule_days` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `use_id` bigint(20) UNSIGNED NOT NULL,
+  `day` varchar(50) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `doctor_schedule_hours`
+--
+
+CREATE TABLE `doctor_schedule_hours` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `hour_start` varchar(50) NOT NULL,
+  `hour_end` varchar(50) NOT NULL,
+  `hour` varchar(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `doctor_schedule_hours`
+--
+
+INSERT INTO `doctor_schedule_hours` (`id`, `hour_start`, `hour_end`, `hour`, `created_at`, `updated_at`) VALUES
+(1, '08:00:00', '08:15:00', '08', NULL, NULL),
+(2, '08:15:00', '08:30:00', '08', NULL, NULL),
+(3, '08:30:00', '08:45:00', '08', NULL, NULL),
+(4, '08:45:00', '09:00:00', '08', NULL, NULL),
+(5, '09:00:00', '09:15:00', '09', NULL, NULL),
+(6, '09:15:00', '09:30:00', '09', NULL, NULL),
+(7, '09:30:00', '09:45:00', '09', NULL, NULL),
+(8, '09:45:00', '10:00:00', '09', NULL, NULL),
+(9, '10:00:00', '10:15:00', '10', NULL, NULL),
+(10, '10:15:00', '10:30:00', '10', NULL, NULL),
+(11, '10:30:00', '10:45:00', '10', NULL, NULL),
+(12, '10:45:00', '11:00:00', '10', NULL, NULL),
+(13, '11:00:00', '11:15:00', '11', NULL, NULL),
+(14, '11:15:00', '11:30:00', '11', NULL, NULL),
+(15, '11:30:00', '11:45:00', '11', NULL, NULL),
+(16, '11:45:00', '12:00:00', '11', NULL, NULL),
+(17, '12:00:00', '12:15:00', '12', NULL, NULL),
+(18, '12:15:00', '12:30:00', '12', NULL, NULL),
+(19, '12:30:00', '12:45:00', '12', NULL, NULL),
+(20, '12:45:00', '13:00:00', '12', NULL, NULL),
+(21, '13:00:00', '13:15:00', '13', NULL, NULL),
+(22, '13:15:00', '13:30:00', '13', NULL, NULL),
+(23, '13:30:00', '13:45:00', '13', NULL, NULL),
+(24, '13:45:00', '14:00:00', '13', NULL, NULL),
+(25, '14:00:00', '14:15:00', '14', NULL, NULL),
+(26, '14:15:00', '14:30:00', '14', NULL, NULL),
+(27, '14:30:00', '14:45:00', '14', NULL, NULL),
+(28, '14:45:00', '15:00:00', '14', NULL, NULL),
+(29, '15:00:00', '15:15:00', '15', NULL, NULL),
+(30, '15:15:00', '15:30:00', '15', NULL, NULL),
+(31, '15:30:00', '15:45:00', '15', NULL, NULL),
+(32, '15:45:00', '16:00:00', '15', NULL, NULL),
+(33, '16:00:00', '16:15:00', '16', NULL, NULL),
+(34, '16:15:00', '16:30:00', '16', NULL, NULL),
+(35, '16:30:00', '16:45:00', '16', NULL, NULL),
+(36, '16:45:00', '17:00:00', '16', NULL, NULL),
+(37, '17:00:00', '17:15:00', '17', NULL, NULL),
+(38, '17:15:00', '17:30:00', '17', NULL, NULL),
+(39, '17:30:00', '17:45:00', '17', NULL, NULL),
+(40, '17:45:00', '18:00:00', '17', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `doctor_schedule_join_hours`
+--
+
+CREATE TABLE `doctor_schedule_join_hours` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `doctor_schedule_day_id` bigint(20) UNSIGNED NOT NULL,
+  `doctor_schedule_hour_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -196,7 +287,9 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
 (1, 'Super-Admin', 'api', '2025-06-29 07:50:18', '2025-06-29 07:50:18'),
-(2, 'prueba2', 'api', '2025-06-29 08:33:02', '2025-06-29 08:33:02');
+(2, 'prueba2', 'api', '2025-06-29 08:33:02', '2025-06-29 08:33:02'),
+(3, 'DOCTOR', 'api', '2023-09-28 17:08:34', '2023-09-28 17:08:34'),
+(4, 'ENFERMERO', 'api', '2023-09-28 17:10:34', '2023-09-28 17:10:34');
 
 -- --------------------------------------------------------
 
@@ -215,7 +308,59 @@ CREATE TABLE `role_has_permissions` (
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (2, 2),
-(16, 2);
+(2, 3),
+(3, 3),
+(10, 4),
+(11, 3),
+(11, 4),
+(12, 3),
+(12, 4),
+(13, 4),
+(14, 3),
+(14, 4),
+(16, 2),
+(19, 3),
+(19, 4),
+(20, 3),
+(20, 4),
+(21, 3),
+(21, 4),
+(22, 4),
+(23, 3),
+(24, 3),
+(25, 3),
+(26, 3),
+(30, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `specialities`
+--
+
+CREATE TABLE `specialities` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `state` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `specialities`
+--
+
+INSERT INTO `specialities` (`id`, `name`, `state`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Anestesiologías', 1, '2023-10-04 07:18:43', '2023-10-04 07:22:16', NULL),
+(2, 'Anatomía Patológica', 1, '2023-10-04 07:22:58', '2023-10-04 07:22:58', NULL),
+(3, 'Cardiología Intervencionista', 1, '2023-10-04 07:23:05', '2023-10-04 07:23:05', NULL),
+(4, 'Cirugía Pediátrica', 1, '2023-10-04 07:23:09', '2023-10-04 07:23:09', NULL),
+(5, 'Cirugía General', 1, '2023-10-04 07:23:14', '2023-10-04 07:23:14', NULL),
+(6, 'Dermatología', 1, '2023-10-04 07:23:21', '2023-10-04 07:23:21', NULL),
+(7, 'Gastroenterología', 1, '2023-10-04 07:23:28', '2023-10-04 07:23:28', NULL),
+(8, 'Ginegología y Obstetricia', 2, '2023-10-04 07:23:57', '2023-10-04 07:25:14', NULL),
+(9, 'prueba20', 1, '2025-06-30 05:24:35', '2025-06-30 05:24:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -255,6 +400,24 @@ INSERT INTO `users` (`id`, `name`, `surname`, `email`, `specialitie_id`, `mobile
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `doctor_schedule_days`
+--
+ALTER TABLE `doctor_schedule_days`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `doctor_schedule_hours`
+--
+ALTER TABLE `doctor_schedule_hours`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `doctor_schedule_join_hours`
+--
+ALTER TABLE `doctor_schedule_join_hours`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `failed_jobs`
@@ -319,6 +482,12 @@ ALTER TABLE `role_has_permissions`
   ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
+-- Indices de la tabla `specialities`
+--
+ALTER TABLE `specialities`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -328,6 +497,24 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `doctor_schedule_days`
+--
+ALTER TABLE `doctor_schedule_days`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `doctor_schedule_hours`
+--
+ALTER TABLE `doctor_schedule_hours`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT de la tabla `doctor_schedule_join_hours`
+--
+ALTER TABLE `doctor_schedule_join_hours`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -357,7 +544,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `specialities`
+--
+ALTER TABLE `specialities`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

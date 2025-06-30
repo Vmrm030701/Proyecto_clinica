@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\Rol\RolesController;
 use App\Http\Controllers\Admin\Staff\StaffsController;
+use App\Http\Controllers\Admin\Doctor\DoctorsController;
+use App\Http\Controllers\Admin\Doctor\SpecialityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +46,10 @@ Route::group([
     Route::get("staffs/config",[StaffsController::class,"config"]);
     Route::post("staffs/{id}",[StaffsController::class,"update"]);
     Route::resource("staffs",StaffsController::class);
+    // 
+    Route::resource("specialities",SpecialityController::class);
+    // 
+    Route::get("doctors/config",[DoctorsController::class,"config"]);
+    Route::post("doctors/{id}",[DoctorsController::class,"update"]);
+    Route::resource("doctors",DoctorsController::class);
 });
