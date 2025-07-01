@@ -1,21 +1,38 @@
 <?php
 
-namespace App\Models\Doctor;
+namespace App\Models\Patient;
 
 use Carbon\Carbon;
-use App\Models\Appointment\Appointment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class DoctorScheduleJoinHour extends Model
+class Patient extends Model
 {
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        "doctor_schedule_day_id",
-        "doctor_schedule_hour_id",
+        "name",
+        "surname",
+        "mobile",
+        "email",
+        "avatar",
+        "birth_date",
+        "gender",
+        "education",
+        "address",
+        "antecedent_family",
+        "antecedent_personal",
+        "antecedent_allergic",
+        "current_disease",
+        "ta",
+        "temperatura",
+        "fc",
+        "fr",
+        "peso",
+        "n_document",
     ];
+
 
     public function setCreatedAtAttribute($value)
     {
@@ -29,11 +46,7 @@ class DoctorScheduleJoinHour extends Model
         $this->attributes["updated_at"]= Carbon::now();
     }
 
-    public function doctor_schedule_day() {
-        return $this->belongsTo(DoctorScheduleDay::class)->withTrased();
-    }
-
-    public function doctor_schedule_hour() {
-        return $this->belongsTo(DoctorScheduleHour::class);
+    public function person() {
+        return $this->hasOne(PatientPerson::class,"patient_id");
     }
 }

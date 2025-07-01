@@ -4,9 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\Rol\RolesController;
+use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Admin\Staff\StaffsController;
 use App\Http\Controllers\Admin\Doctor\DoctorsController;
 use App\Http\Controllers\Admin\Doctor\SpecialityController;
+use App\Http\Controllers\Appointment\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,7 @@ Route::group([
 });
 
 Route::group([
-    'middleware' => 'auth:api',
+    // 'middleware' => 'auth:api',
 ], function ($router) {
     Route::resource("roles",RolesController::class);
 
@@ -52,4 +54,12 @@ Route::group([
     Route::get("doctors/config",[DoctorsController::class,"config"]);
     Route::post("doctors/{id}",[DoctorsController::class,"update"]);
     Route::resource("doctors",DoctorsController::class);
+    // 
+    Route::post("patients/{id}",[PatientController::class,"update"]);
+    Route::resource("patients",PatientController::class);
+    // 
+    Route::get("appointmet/config",[AppointmentController::class,"config"]);
+    Route::get("appointmet/patient",[AppointmentController::class,"query_patient"]);
+    Route::post("appointmet/filter",[AppointmentController::class,"filter"]);
+    Route::resource("appointmet",AppointmentController::class);
 });

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-06-2025 a las 08:13:34
+-- Tiempo de generación: 01-07-2025 a las 09:35:14
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,17 +24,83 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `appointments`
+--
+
+CREATE TABLE `appointments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `doctor_id` bigint(20) UNSIGNED NOT NULL,
+  `patient_id` bigint(20) UNSIGNED NOT NULL,
+  `date_appointment` timestamp NULL DEFAULT NULL,
+  `specialitie_id` bigint(20) UNSIGNED NOT NULL,
+  `doctor_schedule_join_hour_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `amount` double NOT NULL COMMENT 'costo total de la cita medica',
+  `status_pay` tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '1 pagado , 2 deuda ',
+  `status` tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '1 es pendiente , 2 seria atendido',
+  `date_attention` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `appointments`
+--
+
+INSERT INTO `appointments` (`id`, `doctor_id`, `patient_id`, `date_appointment`, `specialitie_id`, `doctor_schedule_join_hour_id`, `user_id`, `amount`, `status_pay`, `status`, `date_attention`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2001, 4, 3, '2025-07-01 15:00:00', 1, 7, 1, 240, 2, 1, NULL, '2025-07-01 07:25:54', '2025-07-01 07:33:38', NULL),
+(2002, 4, 4, '2025-07-01 10:00:00', 2, 6, 1, 125, 2, 1, NULL, '2025-07-01 07:27:42', '2025-07-01 12:31:48', '2025-07-01 12:31:48');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `appointment_pays`
+--
+
+CREATE TABLE `appointment_pays` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `appointment_id` bigint(20) UNSIGNED NOT NULL,
+  `amount` double NOT NULL,
+  `method_payment` varchar(150) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `appointment_pays`
+--
+
+INSERT INTO `appointment_pays` (`id`, `appointment_id`, `amount`, `method_payment`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2002, 2001, 20, 'EFECTIVO', '2025-07-01 07:25:54', '2025-07-01 07:25:54', NULL),
+(2003, 2002, 11, 'YAPE', '2025-07-01 07:27:42', '2025-07-01 07:27:42', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `doctor_schedule_days`
 --
 
 CREATE TABLE `doctor_schedule_days` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `use_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
   `day` varchar(50) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `doctor_schedule_days`
+--
+
+INSERT INTO `doctor_schedule_days` (`id`, `user_id`, `day`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 4, 'Lunes', '2025-07-01 04:02:53', '2025-07-01 04:02:53', NULL),
+(2, 4, 'Martes', '2025-07-01 04:02:53', '2025-07-01 04:02:53', NULL),
+(3, 4, 'Miercoles', '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(4, 4, 'Jueves', '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(5, 4, 'Viernes', '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -112,6 +178,32 @@ CREATE TABLE `doctor_schedule_join_hours` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `doctor_schedule_join_hours`
+--
+
+INSERT INTO `doctor_schedule_join_hours` (`id`, `doctor_schedule_day_id`, `doctor_schedule_hour_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, '2025-07-01 04:02:53', '2025-07-01 04:02:53', NULL),
+(2, 1, 2, '2025-07-01 04:02:53', '2025-07-01 04:02:53', NULL),
+(3, 1, 3, '2025-07-01 04:02:53', '2025-07-01 04:02:53', NULL),
+(4, 1, 4, '2025-07-01 04:02:53', '2025-07-01 04:02:53', NULL),
+(5, 2, 1, '2025-07-01 04:02:53', '2025-07-01 04:02:53', NULL),
+(6, 2, 2, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(7, 2, 3, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(8, 2, 4, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(9, 3, 1, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(10, 3, 2, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(11, 3, 3, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(12, 3, 4, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(13, 4, 1, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(14, 4, 2, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(15, 4, 3, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(16, 4, 4, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(17, 5, 1, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(18, 5, 2, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(19, 5, 3, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(20, 5, 4, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -181,7 +273,9 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
-(2, 'App\\Models\\User', 2);
+(2, 'App\\Models\\User', 2),
+(3, 'App\\Models\\User', 3),
+(3, 'App\\Models\\User', 4);
 
 -- --------------------------------------------------------
 
@@ -194,6 +288,80 @@ CREATE TABLE `password_reset_tokens` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `patients`
+--
+
+CREATE TABLE `patients` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `surname` varchar(250) NOT NULL,
+  `email` varchar(250) DEFAULT NULL,
+  `mobile` varchar(25) DEFAULT NULL,
+  `gender` tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '1 es masculino y 2 es femenino',
+  `avatar` varchar(250) DEFAULT NULL,
+  `n_document` varchar(50) DEFAULT NULL,
+  `birth_date` timestamp NULL DEFAULT NULL,
+  `address` varchar(250) DEFAULT NULL,
+  `education` varchar(250) DEFAULT NULL,
+  `antecedent_family` text DEFAULT NULL,
+  `antecedent_personal` text DEFAULT NULL,
+  `antecedent_allergic` text DEFAULT NULL,
+  `ta` varchar(250) DEFAULT NULL COMMENT 'presion arterial',
+  `temperatura` varchar(20) DEFAULT NULL,
+  `fc` varchar(50) DEFAULT NULL COMMENT 'frecuencia cardiaca',
+  `fr` varchar(50) DEFAULT NULL COMMENT 'frecuencia respiratoria',
+  `peso` varchar(25) DEFAULT NULL,
+  `current_disease` text DEFAULT NULL COMMENT 'enfermedad actual',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `patients`
+--
+
+INSERT INTO `patients` (`id`, `name`, `surname`, `email`, `mobile`, `gender`, `avatar`, `n_document`, `birth_date`, `address`, `education`, `antecedent_family`, `antecedent_personal`, `antecedent_allergic`, `ta`, `temperatura`, `fc`, `fr`, `peso`, `current_disease`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Cristopher antoni', 'alvarado Armas', 'alvaradoarmas3@gmail.com', '947714624', 2, 'patients/qnWWG4M9Fmb9KWPlXY2P6beoo5C9oWqwZHPCGpOH.jpg', '71234416', '2000-11-12 17:00:00', 'Distrito Moche, Sector Poblado Miramar, Calle Crol', NULL, 'asdasd', 'sdadas', 'asdasdas', '4', '11', '4', '5', '27', 'wqwdad', '2025-07-01 05:31:10', '2025-07-01 05:31:10', NULL),
+(2, 'juan', 'sanchez', 'alvaradoarmas3@gmail.com', '947714624', 1, NULL, '212312312', '2000-11-12 10:00:00', 'Distrito Moche, Sector Poblado Miramar, Calle Crol', 'qweqweq', 'sdfsdf', 'sdfds', 'sdfsdfs', '9', '14', '16', '15', '8', 'asdasda', '2025-07-01 05:38:33', '2025-07-01 05:39:10', NULL),
+(3, 'Cristopher antoni', 'alvarado Armas', NULL, '947714624', 1, NULL, '122131', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-01 07:25:54', '2025-07-01 07:25:54', NULL),
+(4, 'Cristopher antoni', 'alvarado Armas', NULL, '947714624', 1, NULL, '32131', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-01 07:27:42', '2025-07-01 07:27:42', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `patient_persons`
+--
+
+CREATE TABLE `patient_persons` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `patient_id` bigint(20) UNSIGNED NOT NULL,
+  `name_companion` varchar(250) NOT NULL,
+  `surname_companion` varchar(250) NOT NULL,
+  `mobile_companion` varchar(250) DEFAULT NULL,
+  `relationship_companion` varchar(250) DEFAULT NULL,
+  `name_responsible` varchar(250) DEFAULT NULL,
+  `surname_responsible` varchar(250) DEFAULT NULL,
+  `mobile_responsible` varchar(250) DEFAULT NULL,
+  `relationship_responsible` varchar(250) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `patient_persons`
+--
+
+INSERT INTO `patient_persons` (`id`, `patient_id`, `name_companion`, `surname_companion`, `mobile_companion`, `relationship_companion`, `name_responsible`, `surname_responsible`, `mobile_responsible`, `relationship_responsible`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'dasdasdas', 'asdsadas', NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-01 05:31:10', '2025-07-01 05:31:10', NULL),
+(2, 2, 'asdasdas', 'asdasdasd', NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-01 05:38:33', '2025-07-01 05:38:33', NULL),
+(3, 3, 'Cristopher antoni', 'alvarado Armas', NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-01 07:25:54', '2025-07-01 07:25:54', NULL),
+(4, 4, '21wdqw', 'wqdw', NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-01 07:27:42', '2025-07-01 07:27:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -395,11 +563,24 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `specialitie_id`, `mobile`, `birth_date`, `gender`, `education`, `designation`, `address`, `avatar`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Super-Admin User', NULL, 'josecode@gmail.com', NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, '2023-09-28 15:46:57', '$2y$10$iec5VX6w9B3vTEIurNIFMufNEK0ztwKOB4.NnIsRIc5GivpgrAozK', 'bkMYKIZInF', '2023-09-28 15:46:57', '2023-09-28 15:46:57', NULL),
-(2, 'Cristopher antoni', 'alvarado Armas', 'ingeniebrios@alcoholizados.com', NULL, '947714624', '2000-11-12 17:00:00', 1, 'sdfdsfsdfsdf', 'sdfsdfsdfsd', 'Distrito Moche, Sector Poblado Miramar, Calle Crol', 'staffs/vh2HdrdoWgAKqV4VPgpZQp0russTVA5KTdciRdsJ.jpg', NULL, '$2y$10$YGZn/vYobNRxAQyzR2lvIOzJVIQolu4O4zhAR/RkuWt9NlewsrdQu', NULL, '2025-06-29 08:45:05', '2025-06-29 08:45:05', NULL);
+(2, 'Cristopher antoni', 'alvarado Armas', 'ingeniebrios@alcoholizados.com', NULL, '947714624', '2000-11-12 17:00:00', 1, 'sdfdsfsdfsdf', 'sdfsdfsdfsd', 'Distrito Moche, Sector Poblado Miramar, Calle Crol', 'staffs/vh2HdrdoWgAKqV4VPgpZQp0russTVA5KTdciRdsJ.jpg', NULL, '$2y$10$YGZn/vYobNRxAQyzR2lvIOzJVIQolu4O4zhAR/RkuWt9NlewsrdQu', NULL, '2025-06-29 08:45:05', '2025-06-29 08:45:05', NULL),
+(4, 'primer', 'segundo', 'alvaradoarmas3@gmail.com', 1, '947714624', '2000-06-30 17:00:00', 1, 'fsdfsdfds', 'sadasdsa', 'dsadsadasdasdsa', 'staffs/wLxfoV73ppwRCCGmBy320su3RzmNsNxSAs6oNkdf.jpg', NULL, '$2y$10$NjqwkC47g3frLtbV.I.wYeWgpbd19gdHux00MuobqzATKtvSfs5Rq', NULL, '2025-07-01 09:02:53', '2025-07-01 09:02:53', NULL);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `appointments`
+--
+ALTER TABLE `appointments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `appointment_pays`
+--
+ALTER TABLE `appointment_pays`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `doctor_schedule_days`
@@ -453,6 +634,18 @@ ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
+-- Indices de la tabla `patients`
+--
+ALTER TABLE `patients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `patient_persons`
+--
+ALTER TABLE `patient_persons`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `permissions`
 --
 ALTER TABLE `permissions`
@@ -499,10 +692,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `appointments`
+--
+ALTER TABLE `appointments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2003;
+
+--
+-- AUTO_INCREMENT de la tabla `appointment_pays`
+--
+ALTER TABLE `appointment_pays`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2004;
+
+--
 -- AUTO_INCREMENT de la tabla `doctor_schedule_days`
 --
 ALTER TABLE `doctor_schedule_days`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `doctor_schedule_hours`
@@ -514,7 +719,7 @@ ALTER TABLE `doctor_schedule_hours`
 -- AUTO_INCREMENT de la tabla `doctor_schedule_join_hours`
 --
 ALTER TABLE `doctor_schedule_join_hours`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -527,6 +732,18 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `patients`
+--
+ALTER TABLE `patients`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `patient_persons`
+--
+ALTER TABLE `patient_persons`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `permissions`
@@ -556,7 +773,7 @@ ALTER TABLE `specialities`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas

@@ -66,10 +66,10 @@ export class routes {
     return this.baseUrl + '/activities';
   }
   public static get addAppointment(): string {
-    return this.baseUrl + '/appointments/add-appointment';
+    return this.baseUrl + '/appointment-m/register';
   }
   public static get appointmentList(): string {
-    return this.baseUrl + '/appointments/appointment-list';
+    return this.baseUrl + '/appointment-m/list';
   }
   public static get editAppointment(): string {
     return this.baseUrl + '/appointments/edit-appointment';
@@ -240,7 +240,7 @@ export class routes {
     return this.baseUrl + '/invoice/view-invoice';
   }
   public static get addPatient(): string {
-    return this.baseUrl + '/patient/add-patient';
+    return this.baseUrl + '/patient-m/register';
   }
   public static get editPatient(): string {
     return this.baseUrl + '/patient/edit-patient';
@@ -252,7 +252,7 @@ export class routes {
     return this.baseUrl + '/patient/patient-setting';
   }
   public static get patientsList(): string {
-    return this.baseUrl + '/patient/patients-list';
+    return this.baseUrl + '/patient-m/list';
   }
   public static get addSalary(): string {
     return this.baseUrl + '/payroll/add-salary';

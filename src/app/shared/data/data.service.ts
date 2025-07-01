@@ -400,17 +400,17 @@ export class DataService {
           img: 'assets/img/icons/menu-icon-03.svg',
           subMenus: [
             {
-              menuValue: 'Patients List',
-              route: routes.patientsList,
-              base: routes.patientsList,
-              permision: 'list_patient',
-              show_nav: true,
-            },
-            {
               menuValue: 'Add Patients',
               route: routes.addPatient,
               base: routes.addPatient,
               permision: 'register_patient',
+              show_nav: true,
+            },
+            {
+              menuValue: 'Patients List',
+              route: routes.patientsList,
+              base: routes.patientsList,
+              permision: 'list_patient',
               show_nav: true,
             },
             {
@@ -444,17 +444,17 @@ export class DataService {
           img: 'assets/img/icons/menu-icon-04.svg',
           subMenus: [
             {
+              menuValue: 'Register Appointment',
+              route: routes.addAppointment,
+              base: routes.addAppointment,
+              permision: 'register_appointment',
+              show_nav: true,
+            },
+            {
               menuValue: 'Appointment List',
               route: routes.appointmentList,
               base: routes.appointmentList,
               permision: 'list_appointment',
-              show_nav: true,
-            },
-            {
-              menuValue: 'Book Appointment',
-              route: routes.addAppointment,
-              base: routes.addAppointment,
-              permision: 'register_appointment',
               show_nav: true,
             },
             {
