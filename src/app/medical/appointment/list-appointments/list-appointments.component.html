@@ -79,6 +79,7 @@
                                         <th mat-sort-header="mobile">Fecha</th>
                                         <th mat-sort-header="birth_date">Hora</th>
                                         <th mat-sort-header="n_document">Especialidad</th>
+                                        <th mat-sort-header="status">Status</th>
                                         <th mat-sort-header="created_at">Fecha de registro</th>
                                         <th ></th>
                                     </tr>
@@ -91,6 +92,9 @@
                                         <td>{{data.date_appointment_format}}</td>
                                         <td>{{ data.segment_hour.format_segment.format_hour_start + ' - '+ data.segment_hour.format_segment.format_hour_end  }}</td>
                                         <td>{{data.specialitie.name }}</td>
+                                        <td>
+                                          <button [ngClass]="{'status-pink' : data.status === 1, 'status-green' : data.status === 2}" class="custom-badge">{{data.status == 1 ? 'PENDIENTE' : 'ATENDIDO'}}</button>
+                                        </td>
                                         <td>{{data.created_at }}</td>
                                         <td class="text-end">
                                             <div class="dropdown dropdown-action" *ngIf="data.id != 1">
@@ -101,6 +105,9 @@
                                                     <a class="dropdown-item" href="javascript:void(0);" (click)="selectUser(data)" data-bs-toggle="modal" 
                                                     [attr.data-bs-target]="'#delete_staff-'+data.id"
                                                     ><i class="fa fa-trash-alt m-r-5"></i> Delete</a>
+
+                                                    <a class="dropdown-item" [routerLink]="[ '/appointment-m/list/atencion-medica/', data.id ]"
+                                                    ><img src="assets/img/icons/doctor-dash-01.svg" style="background: #000;" alt=""> Atención</a>
                                                 </div>
                                             </div>
                                         </td>
