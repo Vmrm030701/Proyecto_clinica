@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-07-2025 a las 09:35:14
+-- Tiempo de generación: 02-07-2025 a las 07:55:37
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -49,8 +49,32 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `doctor_id`, `patient_id`, `date_appointment`, `specialitie_id`, `doctor_schedule_join_hour_id`, `user_id`, `amount`, `status_pay`, `status`, `date_attention`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2001, 4, 3, '2025-07-01 15:00:00', 1, 7, 1, 240, 2, 1, NULL, '2025-07-01 07:25:54', '2025-07-01 07:33:38', NULL),
+(2001, 4, 3, '2025-07-01 15:00:00', 1, 7, 1, 240, 2, 2, '2025-07-02 05:23:10', '2025-07-01 07:25:54', '2025-07-02 05:23:10', NULL),
 (2002, 4, 4, '2025-07-01 10:00:00', 2, 6, 1, 125, 2, 1, NULL, '2025-07-01 07:27:42', '2025-07-01 12:31:48', '2025-07-01 12:31:48');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `appointment_attentions`
+--
+
+CREATE TABLE `appointment_attentions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `appointment_id` bigint(20) UNSIGNED NOT NULL,
+  `patient_id` bigint(20) UNSIGNED NOT NULL,
+  `description` longtext NOT NULL,
+  `receta_medica` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `appointment_attentions`
+--
+
+INSERT INTO `appointment_attentions` (`id`, `appointment_id`, `patient_id`, `description`, `receta_medica`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(997, 2001, 3, 'wefwefwefwefw', '[{\"name_medical\":\"sadas\",\"uso\":\"e\"},{\"name_medical\":\"wdawd\",\"uso\":\"dw\"}]', '2025-07-02 05:23:10', '2025-07-02 05:23:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -74,7 +98,8 @@ CREATE TABLE `appointment_pays` (
 
 INSERT INTO `appointment_pays` (`id`, `appointment_id`, `amount`, `method_payment`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (2002, 2001, 20, 'EFECTIVO', '2025-07-01 07:25:54', '2025-07-01 07:25:54', NULL),
-(2003, 2002, 11, 'YAPE', '2025-07-01 07:27:42', '2025-07-01 07:27:42', NULL);
+(2003, 2002, 11, 'YAPE', '2025-07-01 07:27:42', '2025-07-01 07:27:42', NULL),
+(2004, 2001, 50, 'YAPE', '2025-07-02 04:52:59', '2025-07-02 04:52:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -577,6 +602,12 @@ ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `appointment_attentions`
+--
+ALTER TABLE `appointment_attentions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `appointment_pays`
 --
 ALTER TABLE `appointment_pays`
@@ -698,10 +729,16 @@ ALTER TABLE `appointments`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2003;
 
 --
+-- AUTO_INCREMENT de la tabla `appointment_attentions`
+--
+ALTER TABLE `appointment_attentions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=998;
+
+--
 -- AUTO_INCREMENT de la tabla `appointment_pays`
 --
 ALTER TABLE `appointment_pays`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2004;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2005;
 
 --
 -- AUTO_INCREMENT de la tabla `doctor_schedule_days`
