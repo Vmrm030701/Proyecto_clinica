@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-07-2025 a las 07:55:37
+-- Tiempo de generación: 07-07-2025 a las 21:58:50
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -50,7 +50,8 @@ CREATE TABLE `appointments` (
 
 INSERT INTO `appointments` (`id`, `doctor_id`, `patient_id`, `date_appointment`, `specialitie_id`, `doctor_schedule_join_hour_id`, `user_id`, `amount`, `status_pay`, `status`, `date_attention`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (2001, 4, 3, '2025-07-01 15:00:00', 1, 7, 1, 240, 2, 2, '2025-07-02 05:23:10', '2025-07-01 07:25:54', '2025-07-02 05:23:10', NULL),
-(2002, 4, 4, '2025-07-01 10:00:00', 2, 6, 1, 125, 2, 1, NULL, '2025-07-01 07:27:42', '2025-07-01 12:31:48', '2025-07-01 12:31:48');
+(2002, 4, 4, '2025-07-01 10:00:00', 2, 6, 1, 125, 2, 1, NULL, '2025-07-01 07:27:42', '2025-07-01 12:31:48', '2025-07-01 12:31:48'),
+(2003, 4, 1, '2025-07-07 10:00:00', 1, 25, 1, 230, 2, 1, NULL, '2025-07-07 18:40:37', '2025-07-07 18:40:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -99,7 +100,8 @@ CREATE TABLE `appointment_pays` (
 INSERT INTO `appointment_pays` (`id`, `appointment_id`, `amount`, `method_payment`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (2002, 2001, 20, 'EFECTIVO', '2025-07-01 07:25:54', '2025-07-01 07:25:54', NULL),
 (2003, 2002, 11, 'YAPE', '2025-07-01 07:27:42', '2025-07-01 07:27:42', NULL),
-(2004, 2001, 50, 'YAPE', '2025-07-02 04:52:59', '2025-07-02 04:52:59', NULL);
+(2004, 2001, 50, 'YAPE', '2025-07-02 04:52:59', '2025-07-02 04:52:59', NULL),
+(2005, 2003, 30, 'YAPE', '2025-07-07 18:40:37', '2025-07-07 18:40:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -227,7 +229,67 @@ INSERT INTO `doctor_schedule_join_hours` (`id`, `doctor_schedule_day_id`, `docto
 (17, 5, 1, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
 (18, 5, 2, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
 (19, 5, 3, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
-(20, 5, 4, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL);
+(20, 5, 4, '2025-07-01 04:02:54', '2025-07-01 04:02:54', NULL),
+(21, 1, 21, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(22, 1, 22, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(23, 1, 23, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(24, 1, 24, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(25, 1, 25, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(26, 1, 26, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(27, 1, 27, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(28, 1, 28, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(29, 1, 29, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(30, 1, 30, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(31, 1, 31, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(32, 1, 32, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(33, 2, 21, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(34, 2, 22, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(35, 2, 23, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(36, 2, 24, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(37, 2, 25, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(38, 2, 26, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(39, 2, 27, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(40, 2, 28, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(41, 2, 29, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(42, 2, 30, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(43, 2, 31, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(44, 2, 32, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(45, 3, 21, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(46, 3, 22, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(47, 3, 23, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(48, 3, 24, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(49, 3, 25, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(50, 3, 26, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(51, 3, 27, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(52, 3, 28, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(53, 3, 29, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(54, 3, 30, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(55, 3, 31, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(56, 3, 32, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(57, 4, 21, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(58, 4, 22, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(59, 4, 23, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(60, 4, 24, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(61, 4, 25, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(62, 4, 26, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(63, 4, 27, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(64, 4, 28, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(65, 4, 29, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(66, 4, 30, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(67, 4, 31, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(68, 4, 32, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(69, 5, 21, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(70, 5, 22, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(71, 5, 23, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(72, 5, 24, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(73, 5, 25, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(74, 5, 26, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(75, 5, 27, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(76, 5, 28, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(77, 5, 29, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(78, 5, 30, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(79, 5, 31, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL),
+(80, 5, 32, '2025-07-07 18:39:38', '2025-07-07 18:39:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -383,7 +445,7 @@ CREATE TABLE `patient_persons` (
 --
 
 INSERT INTO `patient_persons` (`id`, `patient_id`, `name_companion`, `surname_companion`, `mobile_companion`, `relationship_companion`, `name_responsible`, `surname_responsible`, `mobile_responsible`, `relationship_responsible`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'dasdasdas', 'asdsadas', NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-01 05:31:10', '2025-07-01 05:31:10', NULL),
+(1, 1, 'JUNA', 'PEREZ', NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-01 05:31:10', '2025-07-07 18:40:37', NULL),
 (2, 2, 'asdasdas', 'asdasdasd', NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-01 05:38:33', '2025-07-01 05:38:33', NULL),
 (3, 3, 'Cristopher antoni', 'alvarado Armas', NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-01 07:25:54', '2025-07-01 07:25:54', NULL),
 (4, 4, '21wdqw', 'wqdw', NULL, NULL, NULL, NULL, NULL, NULL, '2025-07-01 07:27:42', '2025-07-01 07:27:42', NULL);
@@ -589,7 +651,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `specialitie_id`, `mobile`, `birth_date`, `gender`, `education`, `designation`, `address`, `avatar`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Super-Admin User', NULL, 'josecode@gmail.com', NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, '2023-09-28 15:46:57', '$2y$10$iec5VX6w9B3vTEIurNIFMufNEK0ztwKOB4.NnIsRIc5GivpgrAozK', 'bkMYKIZInF', '2023-09-28 15:46:57', '2023-09-28 15:46:57', NULL),
 (2, 'Cristopher antoni', 'alvarado Armas', 'ingeniebrios@alcoholizados.com', NULL, '947714624', '2000-11-12 17:00:00', 1, 'sdfdsfsdfsdf', 'sdfsdfsdfsd', 'Distrito Moche, Sector Poblado Miramar, Calle Crol', 'staffs/vh2HdrdoWgAKqV4VPgpZQp0russTVA5KTdciRdsJ.jpg', NULL, '$2y$10$YGZn/vYobNRxAQyzR2lvIOzJVIQolu4O4zhAR/RkuWt9NlewsrdQu', NULL, '2025-06-29 08:45:05', '2025-06-29 08:45:05', NULL),
-(4, 'primer', 'segundo', 'alvaradoarmas3@gmail.com', 1, '947714624', '2000-06-30 17:00:00', 1, 'fsdfsdfds', 'sadasdsa', 'dsadsadasdasdsa', 'staffs/wLxfoV73ppwRCCGmBy320su3RzmNsNxSAs6oNkdf.jpg', NULL, '$2y$10$NjqwkC47g3frLtbV.I.wYeWgpbd19gdHux00MuobqzATKtvSfs5Rq', NULL, '2025-07-01 09:02:53', '2025-07-01 09:02:53', NULL);
+(4, 'primer', 'segundo', 'alvaradoarmas3@gmail.com', 1, '947714624', '2000-06-30 10:00:00', 1, 'fsdfsdfds', 'sadasdsa', 'dsadsadasdasdsa', 'staffs/wLxfoV73ppwRCCGmBy320su3RzmNsNxSAs6oNkdf.jpg', NULL, '$2y$10$7gSANVgJpNKNpTHteh6BdOo5U3A66nheHmTnWJ3GEaLi4WK0vf6by', NULL, '2025-07-01 09:02:53', '2025-07-07 23:39:38', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -726,7 +788,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2003;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2004;
 
 --
 -- AUTO_INCREMENT de la tabla `appointment_attentions`
@@ -738,7 +800,7 @@ ALTER TABLE `appointment_attentions`
 -- AUTO_INCREMENT de la tabla `appointment_pays`
 --
 ALTER TABLE `appointment_pays`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2005;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2006;
 
 --
 -- AUTO_INCREMENT de la tabla `doctor_schedule_days`
@@ -756,7 +818,7 @@ ALTER TABLE `doctor_schedule_hours`
 -- AUTO_INCREMENT de la tabla `doctor_schedule_join_hours`
 --
 ALTER TABLE `doctor_schedule_join_hours`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
