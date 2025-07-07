@@ -30,12 +30,15 @@ export class ListRoleUserComponent {
 
   public role_generals:any = [];
   public role_selected:any;
+
+  public user:any;
   constructor(
     public RoleService: RolesService,
   ){
 
   }
   ngOnInit() {
+    this.user = this.RoleService.authService.user;
     this.getTableData();
   }
   private getTableData(): void {
@@ -52,6 +55,16 @@ export class ListRoleUserComponent {
     })
 
 
+  }
+
+  isPermision(permission:string){
+    if(this.user.roles.includes('Super-Admin')){
+      return true;
+    }
+    if(this.user.permissions.includes(permission)){
+      return true;
+    }
+    return false;
   }
 
   getTableDataGeneral() {

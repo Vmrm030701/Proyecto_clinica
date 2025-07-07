@@ -23,11 +23,13 @@ class AppointmentController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('viewAny',Appointment::class);
         $specialitie_id = $request->specialitie_id;
         $name_doctor = $request->search;
         $date = $request->date;
+        $user = auth("api")->user();
 
-        $appointments = Appointment::filterAdvance($specialitie_id,$name_doctor,$date)->orderBy("id","desc")
+        $appointments = Appointment::filterAdvance($specialitie_id,$name_doctor,$date,$user)->orderBy("id","desc")
                         ->paginate(20);
 
         return response()->json([
@@ -87,7 +89,7 @@ class AppointmentController extends Controller
     }
 
     public function filter(Request $request) {
-        
+        $this->authorize('filter',Appointment::class);
         $date_appointment = $request->date_appointment;
         $hour = $request->hour;
         $specialitie_id = $request->specialitie_id;
@@ -168,8 +170,9 @@ class AppointmentController extends Controller
         $specialitie_id = $request->specialitie_id;
         $search_doctor = $request->search_doctor;
         $search_patient = $request->search_patient;
+        $user = auth("api")->user();
 
-        $appointments = Appointment::filterAdvancePay($specialitie_id,$search_doctor,$search_patient,null,null)
+        $appointments = Appointment::filterAdvancePay($specialitie_id,$search_doctor,$search_patient,null,null,$user)
                     ->orderBy("id","desc")
                     ->get();
 
@@ -207,6 +210,7 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create',Appointment::class);
         // doctor_id
         // name
         // surname
@@ -273,7 +277,8 @@ class AppointmentController extends Controller
     public function show(string $id)
     {
        $appointment = Appointment::findOrFail($id);
-
+    //    dd($appointment);
+       $this->authorize('view',$appointment);
        return response()->json([
         "appointment" => AppointmentResource::make($appointment)
        ]);
@@ -286,6 +291,7 @@ class AppointmentController extends Controller
     {
         
         $appointment = Appointment::findOrFail($id);
+        $this->authorize('update',$appointment);
         // 50
         // 100 - 200 30
         if($appointment->payments->sum("amount") > $request->amount){
@@ -315,6 +321,7 @@ class AppointmentController extends Controller
     public function destroy(string $id)
     {
         $appointment = Appointment::findOrFail($id);
+        $this->authorize('delete',$appointment);
         $appointment->delete();
        return response()->json([
         "message" => 200,

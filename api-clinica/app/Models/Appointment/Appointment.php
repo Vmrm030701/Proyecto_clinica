@@ -4,6 +4,7 @@ namespace App\Models\Appointment;
 
 use Carbon\Carbon;
 use App\Models\User;
+use Illuminate\Support\Str;
 use App\Models\Patient\Patient;
 use App\Models\Doctor\Specialitie;
 use Illuminate\Support\Facades\DB;
@@ -69,7 +70,13 @@ class Appointment extends Model
         return $this->hasOne(AppointmentAttention::class);
     }
 
-    public function scopefilterAdvance($query,$specialitie_id,$name_doctor,$date){
+    public function scopefilterAdvance($query,$specialitie_id,$name_doctor,$date,$user = null){
+
+        if($user){
+            if(str_contains(Str::upper($user->roles->first()->name),'DOCTOR')){
+              $query->where("doctor_id",$user->id);
+            }
+        }
 
         if($specialitie_id){
             $query->where("specialitie_id",$specialitie_id);
@@ -88,8 +95,14 @@ class Appointment extends Model
         return $query;
     }
 
-    public function scopefilterAdvancePay($query,$specialitie_id,$search_doctor,$search_patient,$date_start,$date_end){
+    public function scopefilterAdvancePay($query,$specialitie_id,$search_doctor,$search_patient,$date_start,$date_end,$user = null){
 
+        if($user){
+            if(str_contains(Str::upper($user->roles->first()->name),'DOCTOR')){
+              $query->where("doctor_id",$user->id);
+            }
+        }
+        
         if($specialitie_id){
             $query->where("specialitie_id",$specialitie_id);
         }
