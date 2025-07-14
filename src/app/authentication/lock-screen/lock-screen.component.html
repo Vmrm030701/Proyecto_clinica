@@ -29,9 +29,9 @@
                                 <!-- Form -->
                                 <div>
                                     <div class="form-group">
-                                        <label  for="password">Password <span class="login-danger">*</span></label>
+                                        <label >Password <span class="login-danger">*</span></label>
                                         <input class="form-control pass-input" [type]="passwordClass ? 'text' : 'password'" >
-                                        <span (click)="togglePassword()"  (keyup.enter)="togglePassword()" [ngClass] = "passwordClass ? 'feather icon-eye' : 'feather icon-eye-off'" class="profile-views toggle-password"  tabindex="0"></span>
+                                        <span (click)="togglePassword()" [ngClass] = "passwordClass ? 'feather icon-eye' : 'feather icon-eye-off'" class="profile-views toggle-password"></span>
                                     </div>
                                     <div class="form-group login-btn">
                                         <button (click)="direction()" class="btn btn-primary btn-block" type="submit">Unlock</button>

@@ -17,7 +17,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login','register']]);
     }
  
  
@@ -27,10 +27,11 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function register() {
+
         $validator = Validator::make(request()->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:8',
+            'password' => 'required|min:8',
         ]);
  
         if($validator->fails()){
@@ -45,7 +46,32 @@ class AuthController extends Controller
  
         return response()->json($user, 201);
     }
+    
+    public function reg() {
+
+        $this->authorize('create',User::class);
+
+        return response()->json([
+            "message" => 200,
+        ]);
+        // $validator = Validator::make(request()->all(), [
+        //     'name' => 'required',
+        //     'email' => 'required|email|unique:users',
+        //     'password' => 'required|min:8',
+        // ]);
  
+        // if($validator->fails()){
+        //     return response()->json($validator->errors()->toJson(), 400);
+        // }
+ 
+        // $user = new User;
+        // $user->name = request()->name;
+        // $user->email = request()->email;
+        // $user->password = bcrypt(request()->password);
+        // $user->save();
+ 
+        return response()->json($user, 201);
+    }
  
     /**
      * Get a JWT via given credentials.
@@ -55,8 +81,8 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
- 
-        if (! $token = auth()->attempt($credentials)) {
+
+        if (! $token = auth('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
  
@@ -70,9 +96,15 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        return response()->json(auth('api')->user());
     }
- 
+    
+    function list() {
+        $users = User::all();
+        return response()->json([
+            "users" => $users,
+        ]);
+    }
     /**
      * Log the user out (Invalidate the token).
      *
@@ -104,10 +136,21 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
+        $permissions = auth("api")->user()->getAllPermissions()->map(function($perm) {
+            return $perm->name;
+        });
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth('api')->factory()->getTTL() * 60,
+            "user" => [
+                "name" => auth('api')->user()->name,
+                "surname" => auth('api')->user()->surname,
+                // "avatar" => auth('api')->user()->avartar,
+                "email"=> auth('api')->user()->email,
+                "roles" => auth('api')->user()->getRoleNames(),
+                "permissions" => $permissions,
+            ],
         ]);
     }
 }

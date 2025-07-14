@@ -40,9 +40,9 @@
                                 <div class="row">
                                     <div class="col-xl-4 col-md-6 col-sm-12 col-12">
                                         <div class="form-group">
-                                            <label for="Customer">Customer Name</label>
+                                            <label>Customer Name</label>
                                             <div class="multipleSelection">
-                                                <div class="selectBox" (click)="openCheckBoxes('Customer')"(keyup.enter)="openCheckBoxes('Customer')" tabindex="0">
+                                                <div class="selectBox" (click)="openCheckBoxes('Customer')">
                                                     <p class="mb-0">Select Customer</p>
                                                     <span class="down-icon"><i class="fa fa-chevron-down"></i></span>
                                                 </div>
@@ -89,7 +89,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="Po">Po Number</label>
+                                            <label>Po Number</label>
                                             <input class="form-control" type="text"
                                                 placeholder="Enter Reference Number">
                                         </div>
@@ -228,7 +228,7 @@
                                                             class="fas fa-plus-circle"></i></a>
                                                     <a href="javascript:void(0);" class="copy-btn me-2"><i class="fas fa-copy"></i></a>
                                                     <a href="javascript:void(0);" class="remove-btn"><i
-                                                            class="fa fa-trash-alt" (click)="deleteItem(i)"(keyup.enter)="deleteItem(i)" tabindex="1"></i></a>
+                                                            class="fa fa-trash-alt" (click)="deleteItem(i)"></i></a>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -306,7 +306,7 @@
                                                 </p>
                                                 <div class="links-info-one" *ngFor="let charge of chargesArray; let i = index">
                                                     <div class="links-info">
-                                                        <div class="links-cont" (click)="deleteCharges(i)" *ngIf="i" tabindex="0"  (keyup.enter)="deleteCharges(i)">
+                                                        <div class="links-cont" (click)="deleteCharges(i)" *ngIf="i">
                                                             <a href="javascript:void(0);" class="service-trash1">
                                                                 <i class="fa fa-minus-circle me-1 mb-3"></i>Service Charge
                                                             </a>
@@ -545,25 +545,25 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
-                                <label for="Account">Account Holder Name</label>
+                                <label>Account Holder Name</label>
                                 <input type="text" class="form-control" placeholder="Add Name">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
-                                <label for="Bank ">Bank name</label>
+                                <label>Bank name</label>
                                 <input type="text" class="form-control" placeholder="Add Bank name">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
-                                <label for="IFSC ">IFSC Code</label>
+                                <label>IFSC Code</label>
                                 <input type="text" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
-                                <label for="Account">Account Number</label>
+                                <label>Account Number</label>
                                 <input type="text" class="form-control">
                             </div>
                         </div>

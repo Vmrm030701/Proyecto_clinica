@@ -28,19 +28,19 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">  
                                     <div class="form-group local-forms">
-                                        <label for="Tax">Tax Name <span class="login-danger">*</span></label>
+                                        <label >Tax Name <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" placeholder="" >
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="Tax">Tax Percentage <span class="login-danger">*</span></label>
+                                        <label >Tax Percentage <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" placeholder="" >
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="Tax">Tax Method <span class="login-danger">*</span></label>
+                                        <label >Tax Method <span class="login-danger">*</span></label>
                                         <mat-select [(ngModel)]="selectedValue"  [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Tax Method">
                                             <mat-option *ngFor="let data of selectedList" [value]="data.value">
                                               {{data.value}}
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group select-gender">
-                                        <label for="Status" class="gen-label">Status <span class="login-danger">*</span></label>
+                                        <label class="gen-label">Status <span class="login-danger">*</span></label>
                                         <div class="form-check-inline">
                                             <label class="form-check-label">
                                                 <input type="radio" name="gender" class="form-check-input">Active
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-12 col-sm-12">
                                     <div class="form-group local-forms">
-                                        <label for="Other">Other Information  <span class="login-danger">*</span></label>
+                                        <label>Other Information  <span class="login-danger">*</span></label>
                                         <textarea class="form-control" rows="3" cols="30"></textarea>
                                     </div>
                                 </div>

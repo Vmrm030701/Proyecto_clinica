@@ -28,49 +28,49 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label for="first">First Name <span class="login-danger">*</span></label>
+                                        <label>First Name <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label for="lastname">Last Name <span class="login-danger">*</span></label>
+                                        <label>Last Name <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label for="user">User Name <span class="login-danger">*</span></label>
+                                        <label>User Name <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="mobile">Mobile <span class="login-danger">*</span></label>
+                                        <label>Mobile <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="email">Email <span class="login-danger">*</span></label>
+                                        <label>Email <span class="login-danger">*</span></label>
                                         <input class="form-control" type="email" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="Password">Password <span class="login-danger">*</span></label>
+                                        <label>Password <span class="login-danger">*</span></label>
                                         <input class="form-control" type="password" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="confirmpassword">Confirm Password <span class="login-danger">*</span></label>
+                                        <label>Confirm Password <span class="login-danger">*</span></label>
                                         <input class="form-control" type="password" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="birth">Date Of Birth <span class="login-danger">*</span></label>
+                                        <label>Date Of Birth <span class="login-danger">*</span></label>
                                         <input class="form-control datetimepicker" type="text" placeholder="" matInput
                                             [matDatepicker]="picker">
                                         <mat-datepicker #picker></mat-datepicker>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group select-gender">
-                                        <label for="gender" class="gen-label">Gender<span class="login-danger">*</span></label>
+                                        <label class="gen-label">Gender<span class="login-danger">*</span></label>
                                         <div class="form-check-inline">
                                             <label class="form-check-label">
                                                 <input type="radio" name="gender" class="form-check-input">Male
@@ -94,19 +94,19 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label for="education">Education <span class="login-danger">*</span></label>
+                                        <label>Education <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label for="designation">Designation <span class="login-danger">*</span></label>
+                                        <label>Designation <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label for="department">Department <span class="login-danger">*</span></label>
+                                        <label>Department <span class="login-danger">*</span></label>
                                         
                                         <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Department">
                                             <mat-option *ngFor="let data of selectedList1" [value]="data.value">
@@ -117,13 +117,13 @@
                                 </div>
                                 <div class="col-12 col-sm-12">
                                     <div class="form-group local-forms">
-                                        <label for="address">Address <span class="login-danger">*</span></label>
+                                        <label>Address <span class="login-danger">*</span></label>
                                         <textarea class="form-control" rows="3" cols="30"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-3">
                                     <div class="form-group local-forms">
-                                        <label for="city">City <span class="login-danger">*</span></label>
+                                        <label>City <span class="login-danger">*</span></label>
                                         <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select City">
                                             <mat-option *ngFor="let data of selectedList2" [value]="data.value">
                                             {{data.value}}
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-3">
                                     <div class="form-group local-forms">
-                                        <label for="country">Country <span class="login-danger">*</span></label>
+                                        <label>Country <span class="login-danger">*</span></label>
                                         <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Country">
                                             <mat-option *ngFor="let data of selectedList3" [value]="data.value">
                                             {{data.value}}
@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-3">
                                     <div class="form-group local-forms">
-                                        <label for="state">State/Province <span class="login-danger">*</span></label>
+                                        <label>State/Province <span class="login-danger">*</span></label>
                                         <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select State">
                                             <mat-option *ngFor="let data of selectedList4" [value]="data.value">
                                             {{data.value}}
@@ -153,19 +153,19 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-3">
                                     <div class="form-group local-forms">
-                                        <label for="postalcode">Postal Code <span class="login-danger">*</span></label>
+                                        <label>Postal Code <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-12">
                                     <div class="form-group local-forms">
-                                        <label for="biography">Start Biography <span class="login-danger">*</span></label>
+                                        <label>Start Biography <span class="login-danger">*</span></label>
                                         <textarea class="form-control" rows="3" cols="30"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-top-form">
-                                        <label for="Avatar " class="local-top">Avatar <span class="login-danger">*</span></label>
+                                        <label class="local-top">Avatar <span class="login-danger">*</span></label>
                                         <div class="settings-btn upload-files-avator">
                                             <input type="file" accept="image/*" name="image" id="file"
                                                 onchange="loadFile(event)" class="hide-input">
@@ -175,7 +175,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group select-gender">
-                                        <label for="Avatar" class="gen-label">Status <span class="login-danger">*</span></label>
+                                        <label class="gen-label">Status <span class="login-danger">*</span></label>
                                         <div class="form-check-inline">
                                             <label class="form-check-label">
                                                 <input type="radio" name="gender" class="form-check-input">Active

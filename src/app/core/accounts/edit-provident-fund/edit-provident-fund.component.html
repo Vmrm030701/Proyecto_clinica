@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="Employee">Employee Name  <span class="login-danger">*</span></label>
+                                        <label >Employee Name  <span class="login-danger">*</span></label>
                                         <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Employee Name">
                                             <mat-option *ngFor="let data of selectedList1" [value]="data.value">
                                             {{data.value}}
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="Fund">Provident Fund Type <span class="login-danger">*</span></label>
+                                        <label >Provident Fund Type <span class="login-danger">*</span></label>
                                         <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Provident Fund Type">
                                             <mat-option *ngFor="let data of selectedList2" [value]="data.value">
                                             {{data.value}}
@@ -48,19 +48,19 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">  
                                     <div class="form-group local-forms">
-                                        <label for="Employee">Employee Share ($) <span class="login-danger">*</span></label>
+                                        <label >Employee Share ($) <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" value="$10">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="Organization">Organization Share ($) <span class="login-danger">*</span></label>
+                                        <label >Organization Share ($) <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" value="$5" >
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="Employee ">Employee Share (%)  <span class="login-danger">*</span></label>
+                                        <label >Employee Share (%)  <span class="login-danger">*</span></label>
                                         <input class="form-control datetimepicker" type="text"  value="10%" [formControl]="date" matInput [matDatepicker]="picker">
                                         <mat-datepicker #picker></mat-datepicker>
                                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -68,13 +68,13 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-forms">
-                                        <label for="Organization">Organization Share (%)  <span class="login-danger">*</span></label>
+                                        <label >Organization Share (%)  <span class="login-danger">*</span></label>
                                         <input class="form-control" type="text" value="5%" >
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-12">
                                     <div class="form-group local-forms">
-                                        <label for="description">Description  <span class="login-danger">*</span></label>
+                                        <label>Description  <span class="login-danger">*</span></label>
                                         <textarea class="form-control" rows="3" cols="30">Lorem ipsum dolor sit amet, consectetur adipiscing elit</textarea>
                                     </div>
                                 </div>

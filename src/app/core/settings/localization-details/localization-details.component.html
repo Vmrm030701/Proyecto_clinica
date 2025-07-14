@@ -61,7 +61,7 @@
                         <form>
                             <div class="settings-form">
                                 <div class="form-group">
-                                    <label for="time">Time Zone</label>
+                                    <label>Time Zone</label>
                                     <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="(UTC +5:30) Antarctica/Palmer">
                                         <mat-option *ngFor="let data of selectedList1" [value]="data.value">
                                         {{data.value}}
@@ -69,7 +69,7 @@
                                     </mat-select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="Date">Date Format</label>
+                                    <label>Date Format</label>
                                     <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="15 May 2016">
                                         <mat-option *ngFor="let data of selectedList2" [value]="data.value">
                                         {{data.value}}
@@ -77,7 +77,7 @@
                                     </mat-select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="Time">Time Format</label>
+                                    <label>Time Format</label>
                                         <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="12 Hours">
                                             <mat-option *ngFor="let data of selectedList3" [value]="data.value">
                                             {{data.value}}
@@ -85,7 +85,7 @@
                                         </mat-select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="symbol">Currency Symbol</label>
+                                    <label>Currency Symbol</label>
                                     <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="$">
                                         <mat-option *ngFor="let data of selectedList4" [value]="data.value">
                                         {{data.value}}

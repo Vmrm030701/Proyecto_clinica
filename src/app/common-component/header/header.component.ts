@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 import { routes } from 'src/app/shared/routes/routes';
 import { SideBarService } from 'src/app/shared/side-bar/side-bar.service';
 
@@ -13,8 +14,9 @@ export class HeaderComponent {
   public openBox = false;
   public miniSidebar  = false;
   public addClass = false;
+  public user:any;
 
-  constructor(public router: Router,private sideBar: SideBarService) {
+  constructor(public router: Router,private sideBar: SideBarService,public auth: AuthService) {
     this.sideBar.toggleSideBar.subscribe((res: string) => {
       if (res == 'true') {
         this.miniSidebar = true;
@@ -22,8 +24,17 @@ export class HeaderComponent {
         this.miniSidebar = false;
       }
     });
+    let USER = localStorage.getItem("user");
+    this.user = JSON.parse(USER ? USER : '');
+    console.log(this.user);
   }
-
+  getRole(){
+    let RoleName = "";
+    this.user.roles.forEach((rol:any) => {
+      RoleName = rol;
+    });
+    return RoleName;
+  }
   openBoxFunc() {
     this.openBox = !this.openBox;
     /* eslint no-var: off */
@@ -34,7 +45,9 @@ export class HeaderComponent {
       mainWrapper.classList.remove('open-msg-box');
     }
   }
-
+  logout(){
+    this.auth.logout();
+  }
   public toggleSideBar(): void {
     this.sideBar.switchSideMenuPosition();
   }
